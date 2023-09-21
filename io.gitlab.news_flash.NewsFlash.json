@@ -26,6 +26,7 @@
         {
             "name": "blueprint-compiler",
             "buildsystem": "meson",
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "git",
@@ -64,7 +65,7 @@
                 {
                     "type" : "archive",
                     "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.0.0/newsflash-3.0.0.tar.xz",
-                    "sha256": "d62cdd296ec2f9285dd444140b0e1746aff5b6bdbe583caa8f42643ac9c8a05c"
+                    "sha256": "66cd83b5f27a59f56470bda6726a029700d643c64f49fa7398a1eed91d9d1f6a"
                 }
             ]
         }
