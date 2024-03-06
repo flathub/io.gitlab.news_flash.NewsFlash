@@ -64,8 +64,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.1.5/newsflash-3.1.5.tar.xz",
-                    "sha256": "c305446671958a7672e4634d89258b0f7ba0f6cb85f9a2416c488e23c0086140"
+                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.1.6/newsflash-3.1.6.tar.xz",
+                    "sha256": "d95ba28745f4ad04c064774701b2eae0265dc9adaffff4b8fe97e44cf2534e72"
                 }
             ]
         }
