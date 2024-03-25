@@ -1,7 +1,7 @@
 {
     "app-id" : "io.gitlab.news_flash.NewsFlash",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "45",
+    "runtime-version" : "46",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -31,31 +31,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag": "v0.10.0"
+                    "tag": "v0.12.0"
                 }
-            ]
-        },
-        {
-            "name": "webp-pixbuf-loader",
-            "buildsystem": "meson",
-            "build-options": {
-                "env": {
-                    "GDK_PIXBUF_MODULEDIR": "/app/lib/newsflash/gdk-pixbuf/2.10.0/"
-                }
-            },
-            "config-opts": [
-                "-Dgdk_pixbuf_moduledir=/app/lib/newsflash/gdk-pixbuf/2.10.0/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/aruiz/webp-pixbuf-loader.git",
-                    "commit": "36b3df08af61887f3558e4d783e8710627a7a4b7",
-                    "tag": "0.2.2"
-                }
-            ],
-            "post-install": [
-                "gdk-pixbuf-query-loaders > $GDK_PIXBUF_MODULEDIR/loaders.cache"
             ]
         },
         {
@@ -64,8 +41,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.1.6/newsflash-3.1.6.tar.xz",
-                    "sha256": "d95ba28745f4ad04c064774701b2eae0265dc9adaffff4b8fe97e44cf2534e72"
+                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.2.0/newsflash-3.2.0.tar.xz",
+                    "sha256": "8c8b4f958fc19e4de39cd36a0925e57b3cc3f52589de9334213fb1a6de717b40"
                 }
             ]
         }
