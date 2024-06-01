@@ -6,6 +6,15 @@
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
+    "add-extensions": {
+        "org.freedesktop.Platform.ffmpeg-full": {
+            "version": "23.08",
+            "directory": "lib/ffmpeg",
+            "add-ld-path": ".",
+            "no-autodownload": false,
+            "autodelete": false
+        }
+    },
     "command" : "io.gitlab.news_flash.NewsFlash",
     "finish-args" : [
         "--share=network",
@@ -24,6 +33,49 @@
     },
     "modules" : [
         {
+            "name": "gtuber",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dintrospection=disabled",
+                "-Dvapi=disabled",
+                "-Dgst-gtuber=enabled"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Rafostar/gtuber.git",
+                    "commit": "f5a64d442c18ae2fa732a851ccb4859c8a45d944"
+                }
+            ]
+        },
+        {
+            "name": "clapper",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dclapper=enabled",
+                "-Dclapper-gtk=enabled",
+                "-Dclapper-app=disabled",
+                "-Dintrospection=enabled",
+                "-Dvapi=enabled"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Rafostar/clapper.git",
+                    "tag": "0.6.0",
+                    "commit": "f0f4801819e389b6a88ce68cd8e9f77afec71bd9"
+                }
+            ]
+        },
+        {
             "name": "blueprint-compiler",
             "buildsystem": "meson",
             "cleanup": ["*"],
@@ -41,10 +93,13 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.2.0/newsflash-3.2.0.tar.xz",
-                    "sha256": "8c8b4f958fc19e4de39cd36a0925e57b3cc3f52589de9334213fb1a6de717b40"
+                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.0/newsflash-3.3.0.tar.xz",
+                    "sha256": "6eb993f7235074247354f1584767e241fd9d8ef23ac212a038d88a7f19e9357e"
                 }
             ]
         }
+    ],
+    "cleanup-commands": [
+        "mkdir -p /app/lib/ffmpeg"
     ]
 }
