@@ -22,7 +22,8 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--device=dri"
+        "--device=dri",
+        "--own-name=org.mpris.MediaPlayer2.Newsflash"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
@@ -70,8 +71,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Rafostar/clapper.git",
-                    "tag": "0.6.0",
-                    "commit": "f0f4801819e389b6a88ce68cd8e9f77afec71bd9"
+                    "tag": "0.6.1"
                 }
             ]
         },
@@ -93,8 +93,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.0/newsflash-3.3.0.tar.xz",
-                    "sha256": "6eb993f7235074247354f1584767e241fd9d8ef23ac212a038d88a7f19e9357e"
+                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.1/newsflash-3.3.1.tar.xz",
+                    "sha256": "7c3e120cd5c1662b109b3cbcdd0b287dc82838e59adc0b2f5775b7504134e07b"
                 }
             ]
         }
