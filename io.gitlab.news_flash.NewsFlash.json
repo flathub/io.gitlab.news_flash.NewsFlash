@@ -83,7 +83,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag": "v0.12.0"
+                    "tag": "v0.14.0"
                 }
             ]
         },
@@ -93,8 +93,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.4/newsflash-3.3.4.tar.xz",
-                    "sha256": "adc28575f2bc2f3bcda8d1f1e63bb12839bef0f5b47200df18fb9a0e18cfc83b"
+                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.5/newsflash-3.3.5.tar.xz",
+                    "sha256": "9a0373e7bdd13a7f2a1d8d3f50a6f6deb8e18c8bc21be1fcf482d0d48ffd3b05"
                 }
             ]
         }
