@@ -13,6 +13,13 @@
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
+        },
+        "com.github.rafostar.Clapper.Enhancers": {
+            "version": "stable",
+            "directory": "extensions/clapper/enhancers",
+            "add-ld-path": "lib",
+            "no-autodownload": false,
+            "autodelete": false
         }
     },
     "command" : "io.gitlab.news_flash.NewsFlash",
@@ -23,7 +30,9 @@
         "--socket=wayland",
         "--socket=pulseaudio",
         "--device=dri",
-        "--own-name=org.mpris.MediaPlayer2.Newsflash"
+        "--own-name=org.mpris.MediaPlayer2.Newsflash",
+        "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
+        "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
@@ -34,12 +43,13 @@
     },
     "modules" : [
         {
-            "name": "gtuber",
+            "name": "libpeas",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dintrospection=disabled",
-                "-Dvapi=disabled",
-                "-Dgst-gtuber=enabled"
+                "--wrap-mode=nodownload",
+                "-Dgjs=false",
+                "-Dlua51=false",
+                "-Dintrospection=false"
             ],
             "cleanup": [
                 "/include",
@@ -47,9 +57,13 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/Rafostar/gtuber.git",
-                    "commit": "f5a64d442c18ae2fa732a851ccb4859c8a45d944"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.5.tar.xz",
+                    "sha256": "376f2f73d731b54e13ddbab1d91b6382cf6a980524def44df62add15489de6dd",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "libpeas"
+                    }
                 }
             ]
         },
@@ -71,7 +85,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Rafostar/clapper.git",
-                    "tag": "0.6.1"
+                    "tag": "0.8.0"
                 }
             ]
         },
@@ -100,6 +114,7 @@
         }
     ],
     "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg"
+        "mkdir -p /app/lib/ffmpeg",
+        "mkdir -p /app/extensions/clapper/enhancers"
     ]
 }
