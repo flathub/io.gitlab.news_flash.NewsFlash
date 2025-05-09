@@ -36,7 +36,8 @@
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
       "CARGO_HOME": "/run/build/newsflash/cargo",
-      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
+      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@",
+      "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
     }
   },
   "modules": [
