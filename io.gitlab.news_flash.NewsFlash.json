@@ -36,8 +36,29 @@
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
       "CARGO_HOME": "/run/build/newsflash/cargo",
-      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@",
-      "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
+      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
+    },
+    "arch": {
+      "i386": {
+        "env": {
+          "LIBXML2": "/lib/i386-linux-gnu/libxml2.so"
+        }
+      },
+      "arm": {
+        "env": {
+          "LIBXML2": "/lib/arm-linux-gnueabihf/libxml2.so"
+        }
+      },
+      "x86_64": {
+        "env": {
+          "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
+        }
+      },
+      "aarch64": {
+        "env": {
+          "LIBXML2": "/lib/aarch64-linux-gnu/libxml2.so"
+        }
+      }
     }
   },
   "modules": [
