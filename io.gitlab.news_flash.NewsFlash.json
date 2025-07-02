@@ -1,105 +1,134 @@
 {
-    "app-id" : "io.gitlab.news_flash.NewsFlash",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "47",
-    "sdk" : "org.gnome.Sdk",
-    "sdk-extensions" : [
-        "org.freedesktop.Sdk.Extension.rust-stable"
-    ],
-    "add-extensions": {
-        "org.freedesktop.Platform.ffmpeg-full": {
-            "version": "24.08",
-            "directory": "lib/ffmpeg",
-            "add-ld-path": ".",
-            "no-autodownload": false,
-            "autodelete": false
-        }
+  "app-id": "io.gitlab.news_flash.NewsFlash",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "48",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "add-extensions": {
+    "org.freedesktop.Platform.ffmpeg-full": {
+      "version": "24.08",
+      "directory": "lib/ffmpeg",
+      "add-ld-path": ".",
+      "no-autodownload": false,
+      "autodelete": false
     },
-    "command" : "io.gitlab.news_flash.NewsFlash",
-    "finish-args" : [
-        "--share=network",
-        "--share=ipc",
-        "--socket=fallback-x11",
-        "--socket=wayland",
-        "--socket=pulseaudio",
-        "--device=dri",
-        "--own-name=org.mpris.MediaPlayer2.Newsflash"
-    ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin",
-        "env" : {
-            "CARGO_HOME" : "/run/build/newsflash/cargo",
-            "PASSWORD_CRYPT_KEY" : "@PASSWORD_CRYPT_KEY@"
-        }
+    "com.github.rafostar.Clapper.Enhancers": {
+      "version": "stable",
+      "directory": "extensions/clapper/enhancers",
+      "add-ld-path": "lib",
+      "no-autodownload": false,
+      "autodelete": false
+    }
+  },
+  "command": "io.gitlab.news_flash.NewsFlash",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--device=dri",
+    "--own-name=org.mpris.MediaPlayer2.Newsflash",
+    "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
+    "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/rust-stable/bin",
+    "env": {
+      "CARGO_HOME": "/run/build/newsflash/cargo",
+      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
     },
-    "modules" : [
-        {
-            "name": "gtuber",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dintrospection=disabled",
-                "-Dvapi=disabled",
-                "-Dgst-gtuber=enabled"
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/Rafostar/gtuber.git",
-                    "commit": "f5a64d442c18ae2fa732a851ccb4859c8a45d944"
-                }
-            ]
-        },
-        {
-            "name": "clapper",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dclapper=enabled",
-                "-Dclapper-gtk=enabled",
-                "-Dclapper-app=disabled",
-                "-Dintrospection=enabled",
-                "-Dvapi=enabled"
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/Rafostar/clapper.git",
-                    "tag": "0.6.1"
-                }
-            ]
-        },
-        {
-            "name": "blueprint-compiler",
-            "buildsystem": "meson",
-            "cleanup": ["*"],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag": "v0.14.0"
-                }
-            ]
-        },
-        {
-            "name" : "newsflash",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/3.3.5/newsflash-3.3.5.tar.xz",
-                    "sha256": "9a0373e7bdd13a7f2a1d8d3f50a6f6deb8e18c8bc21be1fcf482d0d48ffd3b05"
-                }
-            ]
+    "arch": {
+      "i386": {
+        "env": {
+          "LIBXML2": "/lib/i386-linux-gnu/libxml2.so"
         }
-    ],
-    "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg"
-    ]
+      },
+      "arm": {
+        "env": {
+          "LIBXML2": "/lib/arm-linux-gnueabihf/libxml2.so"
+        }
+      },
+      "x86_64": {
+        "env": {
+          "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
+        }
+      },
+      "aarch64": {
+        "env": {
+          "LIBXML2": "/lib/aarch64-linux-gnu/libxml2.so"
+        }
+      }
+    }
+  },
+  "modules": [
+    {
+      "name": "libpeas",
+      "buildsystem": "meson",
+      "config-opts": [
+        "--wrap-mode=nodownload",
+        "-Dgjs=false",
+        "-Dlua51=false",
+        "-Dintrospection=false"
+      ],
+      "cleanup": ["/include", "/lib/pkgconfig"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.5.tar.xz",
+          "sha256": "376f2f73d731b54e13ddbab1d91b6382cf6a980524def44df62add15489de6dd",
+          "x-checker-data": {
+            "type": "gnome",
+            "name": "libpeas"
+          }
+        }
+      ]
+    },
+    {
+      "name": "clapper",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dclapper=enabled",
+        "-Dclapper-gtk=enabled",
+        "-Dclapper-app=disabled",
+        "-Dintrospection=enabled",
+        "-Dvapi=disabled"
+      ],
+      "cleanup": ["/include", "/lib/pkgconfig"],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Rafostar/clapper.git",
+          "tag": "0.8.0"
+        }
+      ]
+    },
+    {
+      "name": "blueprint-compiler",
+      "buildsystem": "meson",
+      "cleanup": ["*"],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+          "tag": "v0.16.0"
+        }
+      ]
+    },
+    {
+      "name": "newsflash",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.0-beta3/newsflash-4.0.0-beta3.tar.xz",
+          "sha256": "432ca8918958922841c3f9d5736abff5d9dd83c8414247d958b1de5575587de6"
+        }
+      ]
+    }
+  ],
+  "cleanup-commands": [
+    "mkdir -p /app/lib/ffmpeg",
+    "mkdir -p /app/extensions/clapper/enhancers"
+  ]
 }
