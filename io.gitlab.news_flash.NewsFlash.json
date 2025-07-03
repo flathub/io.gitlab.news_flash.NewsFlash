@@ -1,134 +1,144 @@
 {
-  "app-id": "io.gitlab.news_flash.NewsFlash",
-  "runtime": "org.gnome.Platform",
-  "runtime-version": "48",
-  "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
-  "add-extensions": {
-    "org.freedesktop.Platform.ffmpeg-full": {
-      "version": "24.08",
-      "directory": "lib/ffmpeg",
-      "add-ld-path": ".",
-      "no-autodownload": false,
-      "autodelete": false
+    "app-id": "io.gitlab.news_flash.NewsFlash",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "48",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "add-extensions": {
+        "org.freedesktop.Platform.ffmpeg-full": {
+            "version": "24.08",
+            "directory": "lib/ffmpeg",
+            "add-ld-path": ".",
+            "no-autodownload": false,
+            "autodelete": false
+        },
+        "com.github.rafostar.Clapper.Enhancers": {
+            "version": "stable",
+            "directory": "extensions/clapper/enhancers",
+            "add-ld-path": "lib",
+            "no-autodownload": false,
+            "autodelete": false
+        }
     },
-    "com.github.rafostar.Clapper.Enhancers": {
-      "version": "stable",
-      "directory": "extensions/clapper/enhancers",
-      "add-ld-path": "lib",
-      "no-autodownload": false,
-      "autodelete": false
-    }
-  },
-  "command": "io.gitlab.news_flash.NewsFlash",
-  "finish-args": [
-    "--share=network",
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--socket=wayland",
-    "--socket=pulseaudio",
-    "--device=dri",
-    "--own-name=org.mpris.MediaPlayer2.Newsflash",
-    "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
-    "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
-  ],
-  "build-options": {
-    "append-path": "/usr/lib/sdk/rust-stable/bin",
-    "env": {
-      "CARGO_HOME": "/run/build/newsflash/cargo",
-      "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
-    },
-    "arch": {
-      "i386": {
+    "command": "io.gitlab.news_flash.NewsFlash",
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=dri",
+        "--own-name=org.mpris.MediaPlayer2.Newsflash",
+        "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
+        "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin",
         "env": {
-          "LIBXML2": "/lib/i386-linux-gnu/libxml2.so"
+            "CARGO_HOME": "/run/build/newsflash/cargo",
+            "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
+        },
+        "arch": {
+            "i386": {
+                "env": {
+                    "LIBXML2": "/lib/i386-linux-gnu/libxml2.so"
+                }
+            },
+            "arm": {
+                "env": {
+                    "LIBXML2": "/lib/arm-linux-gnueabihf/libxml2.so"
+                }
+            },
+            "x86_64": {
+                "env": {
+                    "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
+                }
+            },
+            "aarch64": {
+                "env": {
+                    "LIBXML2": "/lib/aarch64-linux-gnu/libxml2.so"
+                }
+            }
         }
-      },
-      "arm": {
-        "env": {
-          "LIBXML2": "/lib/arm-linux-gnueabihf/libxml2.so"
-        }
-      },
-      "x86_64": {
-        "env": {
-          "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
-        }
-      },
-      "aarch64": {
-        "env": {
-          "LIBXML2": "/lib/aarch64-linux-gnu/libxml2.so"
-        }
-      }
-    }
-  },
-  "modules": [
-    {
-      "name": "libpeas",
-      "buildsystem": "meson",
-      "config-opts": [
-        "--wrap-mode=nodownload",
-        "-Dgjs=false",
-        "-Dlua51=false",
-        "-Dintrospection=false"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.5.tar.xz",
-          "sha256": "376f2f73d731b54e13ddbab1d91b6382cf6a980524def44df62add15489de6dd",
-          "x-checker-data": {
-            "type": "gnome",
-            "name": "libpeas"
-          }
-        }
-      ]
     },
-    {
-      "name": "clapper",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dclapper=enabled",
-        "-Dclapper-gtk=enabled",
-        "-Dclapper-app=disabled",
-        "-Dintrospection=enabled",
-        "-Dvapi=disabled"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
+    "modules": [
         {
-          "type": "git",
-          "url": "https://github.com/Rafostar/clapper.git",
-          "tag": "0.8.0"
-        }
-      ]
-    },
-    {
-      "name": "blueprint-compiler",
-      "buildsystem": "meson",
-      "cleanup": ["*"],
-      "sources": [
+            "name": "libpeas",
+            "buildsystem": "meson",
+            "config-opts": [
+                "--wrap-mode=nodownload",
+                "-Dgjs=false",
+                "-Dlua51=false",
+                "-Dintrospection=false"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.7.tar.xz",
+                    "sha256": "1e9a9d69761d2109eff5b7c11d8c96b4867ccfaca2b921eded49401192769ec9",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "libpeas"
+                    }
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-          "tag": "v0.16.0"
-        }
-      ]
-    },
-    {
-      "name": "newsflash",
-      "buildsystem": "meson",
-      "sources": [
+            "name": "clapper",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dclapper=enabled",
+                "-Dclapper-gtk=enabled",
+                "-Dclapper-app=disabled",
+                "-Dintrospection=enabled",
+                "-Dvapi=disabled"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Rafostar/clapper.git",
+                    "tag": "0.8.0"
+                }
+            ]
+        },
         {
-          "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.1/newsflash-4.0.1.tar.xz",
-          "sha256": "c847fd73c5ce7bfe0898ff472150158207e7da389f61e3dcc044dbb5774e2b2c"
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "cleanup": [
+                "*"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "tag": "v0.16.0"
+                }
+            ]
+        },
+        {
+            "name": "newsflash",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.1/newsflash-4.0.1.tar.xz",
+                    "sha256": "c847fd73c5ce7bfe0898ff472150158207e7da389f61e3dcc044dbb5774e2b2c"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "cleanup-commands": [
-    "mkdir -p /app/lib/ffmpeg",
-    "mkdir -p /app/extensions/clapper/enhancers"
-  ]
+    ],
+    "cleanup-commands": [
+        "mkdir -p /app/lib/ffmpeg",
+        "mkdir -p /app/extensions/clapper/enhancers"
+    ]
 }
