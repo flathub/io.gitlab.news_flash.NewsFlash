@@ -75,8 +75,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.5.tar.xz",
-          "sha256": "376f2f73d731b54e13ddbab1d91b6382cf6a980524def44df62add15489de6dd",
+          "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.7.tar.xz",
+          "sha256": "1e9a9d69761d2109eff5b7c11d8c96b4867ccfaca2b921eded49401192769ec9",
           "x-checker-data": {
             "type": "gnome",
             "name": "libpeas"
@@ -121,8 +121,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.2/newsflash-4.0.2.tar.xz",
-          "sha256": "b8a4a360221f3ad6102a03581845e5e1b95ba007596a1eb00a2a32c8f458f1f0"
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.3/newsflash-4.0.3.tar.xz",
+          "sha256": "354f914b855c9fc70c4163f6ef5d09ff601f0d33f53e1715db664d4da803d01a"
         }
       ]
     }
