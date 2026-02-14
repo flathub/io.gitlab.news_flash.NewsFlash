@@ -1,17 +1,10 @@
 {
   "app-id": "io.gitlab.news_flash.NewsFlash",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "48",
+  "runtime-version": "49",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "add-extensions": {
-    "org.freedesktop.Platform.ffmpeg-full": {
-      "version": "24.08",
-      "directory": "lib/ffmpeg",
-      "add-ld-path": ".",
-      "no-autodownload": false,
-      "autodelete": false
-    },
     "com.github.rafostar.Clapper.Enhancers": {
       "version": "stable",
       "directory": "extensions/clapper/enhancers",
@@ -62,67 +55,17 @@
     }
   },
   "modules": [
-    {
-      "name": "libpeas",
-      "buildsystem": "meson",
-      "config-opts": [
-        "--wrap-mode=nodownload",
-        "-Dgjs=false",
-        "-Dlua51=false",
-        "-Dintrospection=false"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.5.tar.xz",
-          "sha256": "376f2f73d731b54e13ddbab1d91b6382cf6a980524def44df62add15489de6dd",
-          "x-checker-data": {
-            "type": "gnome",
-            "name": "libpeas"
-          }
-        }
-      ]
-    },
-    {
-      "name": "clapper",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dclapper=enabled",
-        "-Dclapper-gtk=enabled",
-        "-Dclapper-app=disabled",
-        "-Dintrospection=enabled",
-        "-Dvapi=disabled"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/Rafostar/clapper.git",
-          "tag": "0.8.0"
-        }
-      ]
-    },
-    {
-      "name": "blueprint-compiler",
-      "buildsystem": "meson",
-      "cleanup": ["*"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-          "tag": "v0.16.0"
-        }
-      ]
-    },
+    "deno.json",
+    "libpeas.json",
+    "clapper.json",
     {
       "name": "newsflash",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.0.0-beta2/newsflash-4.0.0-beta2.tar.xz",
-          "sha256": "bed00cfa7ea45711520afb15232c670a8013bf8730ba6fc95abc316f7f010585"
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/5.0.0-beta1/newsflash-5.0.0-beta1.tar.xz",
+          "sha256": "ae17def42058ee953ef003d330db221dba46457dbf37b29d552b6b039ecdfe13"
         }
       ]
     }
