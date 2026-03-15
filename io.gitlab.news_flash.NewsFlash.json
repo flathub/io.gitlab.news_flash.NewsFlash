@@ -55,55 +55,17 @@
     }
   },
   "modules": [
-    {
-      "name": "libpeas",
-      "buildsystem": "meson",
-      "config-opts": [
-        "--wrap-mode=nodownload",
-        "-Dgjs=false",
-        "-Dlua51=false",
-        "-Dintrospection=false"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libpeas/2.2/libpeas-2.2.0.tar.xz",
-          "sha256": "c2887233f084a69fabfc7fa0140d410491863d7050afb28677f9a553b2580ad9",
-          "x-checker-data": {
-            "type": "gnome",
-            "name": "libpeas"
-          }
-        }
-      ]
-    },
-    {
-      "name": "clapper",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dclapper=enabled",
-        "-Dclapper-gtk=enabled",
-        "-Dclapper-app=disabled",
-        "-Dintrospection=enabled",
-        "-Dvapi=disabled"
-      ],
-      "cleanup": ["/include", "/lib/pkgconfig"],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/Rafostar/clapper.git",
-          "tag": "0.8.0"
-        }
-      ]
-    },
+    "deno.json",
+    "libpeas.json",
+    "clapper.json",
     {
       "name": "newsflash",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/4.2.1/newsflash-4.2.1.tar.xz",
-          "sha256": "43bbf33921cad82f3537bda9bc61f2f6b3524c25b474aa577a9283dc983e6c86"
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/5.0.0/newsflash-5.0.0.tar.xz",
+          "sha256": "ffc06988e3d9540c1606c9c82a5e0b612bd11e93960746d776a15d997837da67"
         }
       ]
     }
