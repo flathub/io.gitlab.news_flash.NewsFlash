@@ -32,16 +32,6 @@
       "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
     },
     "arch": {
-      "i386": {
-        "env": {
-          "LIBXML2": "/lib/i386-linux-gnu/libxml2.so"
-        }
-      },
-      "arm": {
-        "env": {
-          "LIBXML2": "/lib/arm-linux-gnueabihf/libxml2.so"
-        }
-      },
       "x86_64": {
         "env": {
           "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
