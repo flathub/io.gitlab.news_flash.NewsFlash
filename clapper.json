@@ -13,7 +13,8 @@
     {
       "type": "git",
       "url": "https://github.com/Rafostar/clapper.git",
-      "tag": "0.10.0"
+      "tag": "0.10.0",
+      "commit": "8fcaaffe8a8f408f26a2da9f0a0087e32195fa46"
     }
   ]
 }
