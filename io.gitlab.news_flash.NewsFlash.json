@@ -53,8 +53,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/5.2.0/newsflash-5.2.0.tar.xz",
-          "sha256": "ff5ecfd4e9770f25df9cee4cf7708df3865215ed03f4b7ec4bcdfce58fe98bcc"
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/5.2.1/newsflash-5.2.1.tar.xz",
+          "sha256": "0f67d14431934c4fa76b9f7f771a47b55ca2e6ead3abb1f437117aad1c2f195e"
         }
       ]
     }
