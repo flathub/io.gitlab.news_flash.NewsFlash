@@ -1,7 +1,7 @@
 {
   "app-id": "io.gitlab.news_flash.NewsFlash",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "50",
+  "runtime-version": "51",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "add-extensions": {
@@ -22,6 +22,7 @@
     "--socket=pulseaudio",
     "--device=dri",
     "--own-name=org.mpris.MediaPlayer2.Newsflash",
+    "--own-name=org.mpris.MediaPlayer2.Newsflash.Audio",
     "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
     "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
   ],
@@ -30,18 +31,6 @@
     "env": {
       "CARGO_HOME": "/run/build/newsflash/cargo",
       "PASSWORD_CRYPT_KEY": "@PASSWORD_CRYPT_KEY@"
-    },
-    "arch": {
-      "x86_64": {
-        "env": {
-          "LIBXML2": "/lib/x86_64-linux-gnu/libxml2.so"
-        }
-      },
-      "aarch64": {
-        "env": {
-          "LIBXML2": "/lib/aarch64-linux-gnu/libxml2.so"
-        }
-      }
     }
   },
   "modules": [
@@ -54,8 +43,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/5.2.5/newsflash-5.2.5.tar.xz",
-          "sha256": "3344acd9b035a592bad6d7a202fe40ff79edd2433ac6b39a16398535e0c2908f"
+          "url": "https://gitlab.com/api/v4/projects/8320003/packages/generic/newsflash/6.0.0/newsflash-6.0.0.tar.xz",
+          "sha256": "aaee856bb9627b718981e43003d737fd012b5d48ce4372f761d7366e13f24bfd"
         }
       ]
     }
